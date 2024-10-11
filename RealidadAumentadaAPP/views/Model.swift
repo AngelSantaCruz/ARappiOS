@@ -48,9 +48,12 @@ class Model {
         self.scale = scale
     }
     func LoadModelEntity(){
-        let filename = self.name.lowercased()
+        let filename = self.name
         guard let modelEntity = try? Entity.loadModel(named: filename) else { return }
         self.model=modelEntity
+        
+       
+
     }
 }
 

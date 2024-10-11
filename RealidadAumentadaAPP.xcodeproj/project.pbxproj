@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C88014E12CAA1F050030E647 /* FocusEntity in Frameworks */ = {isa = PBXBuildFile; productRef = C88014E02CAA1F050030E647 /* FocusEntity */; };
+		C89D5F392CB2D36F00900D55 /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = C89D5F382CB2D36F00900D55 /* GoogleGenerativeAI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C88014E12CAA1F050030E647 /* FocusEntity in Frameworks */,
+				C89D5F392CB2D36F00900D55 /* GoogleGenerativeAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +128,7 @@
 			name = RealidadAumentadaAPP;
 			packageProductDependencies = (
 				C88014E02CAA1F050030E647 /* FocusEntity */,
+				C89D5F382CB2D36F00900D55 /* GoogleGenerativeAI */,
 			);
 			productName = RealidadAumentadaAPP;
 			productReference = C817EDB22C9D3C7700C81AC9 /* RealidadAumentadaAPP.app */;
@@ -211,6 +214,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				C88014DD2CAA1D250030E647 /* XCRemoteSwiftPackageReference "FocusEntity" */,
+				C89D5EB02CB219EA00900D55 /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C817EDB32C9D3C7700C81AC9 /* Products */;
@@ -416,7 +420,8 @@
 				DEVELOPMENT_TEAM = HSF95G3578;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "permiso de camara";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Requerido para guardar fotos de la vista de realidad aumentada";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
@@ -447,7 +452,8 @@
 				DEVELOPMENT_TEAM = HSF95G3578;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSCameraUsageDescription = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "permiso de camara";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Requerido para guardar fotos de la vista de realidad aumentada";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = arkit;
@@ -589,6 +595,14 @@
 				minimumVersion = 2.5.1;
 			};
 		};
+		C89D5EB02CB219EA00900D55 /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google-gemini/generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.6;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -596,6 +610,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C88014DD2CAA1D250030E647 /* XCRemoteSwiftPackageReference "FocusEntity" */;
 			productName = FocusEntity;
+		};
+		C89D5F382CB2D36F00900D55 /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GoogleGenerativeAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
