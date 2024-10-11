@@ -10,8 +10,7 @@ import RealityKit
 import ARKit
 
 class CustomARView: ARView{
-
-    var focusEntity:FocusEntity?
+      var focusEntity:FocusEntity?
     
     required init(frame frameRect:CGRect){
         super.init(frame:frameRect)

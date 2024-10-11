@@ -49,35 +49,20 @@ struct ARViewContainer : UIViewRepresentable {
     @EnvironmentObject var placementSettings:PlacementSettings
     
     func makeUIView(context: Context) -> CustomARView {
-        let arView = CustomARView(frame: .zero)
         
-        
-        self.placementSettings.sceneObserver = arView.scene.subscribe(to: SceneEvents.Update.self, { (event) in
+        ARVariables.arView = CustomARView(frame: .zero)
+        self.placementSettings.sceneObserver = ARVariables.arView.scene.subscribe(to: SceneEvents.Update.self, { (event) in
             
-            self.updateScene(for: arView)
+            self.updateScene(for: ARVariables.arView)
             
         })
-        //let config = ARWorldTrackingConfiguration()
-        //config.planeDetection = [.horizontal,.vertical]
-        //config.environmentTexturing = .automatic
-        
-        //arView.session.run(config)
-        return arView
+    
+        return ARVariables.arView
     }
     
     
     func updateUIView(_ uiView: CustomARView, context: Context) {
-        // 1.
-        //let anchorEntity = AnchorEntity(plane: .any)
-        
-        // 2.
-        //guard let modelEntity = try? Entity.loadModel(named: modelName) else { return }
-        
-        // 3.
-        //anchorEntity.addChild(modelEntity)
-        
-        // 4.
-        //uiView.scene.addAnchor(anchorEntity)
+       
     }
     
     private func updateScene(for arView: CustomARView){
