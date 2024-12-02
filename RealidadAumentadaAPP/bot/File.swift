@@ -26,7 +26,7 @@ func getBotResponse(message: String) async -> String {
 
     
     let tempMessage = message.lowercased()
-    let modelAI = GenerativeModel(name: "gemini-1.5-flash-latest", apiKey:"AIzaSyBmlxJn-bSU0qZjdlJ0bJihXosalRkg_ns")
+    let modelAI = GenerativeModel(name: "gemini-1.5-flash", apiKey:"AIzaSyBmlxJn-bSU0qZjdlJ0bJihXosalRkg_ns")
 
     
     var historialChat: [ModelContent] = []

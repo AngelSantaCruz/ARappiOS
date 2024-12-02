@@ -64,6 +64,7 @@ struct Models {
     init(){
         //sillas
         let silla1 = Model(name: "Silla#1", category: .silla, scale: 1.0)
+        // sillaVerde= Model(name"sillaverde", category:.silla, subCategory:.sillaVerde, scale: 1.0)
         let silla2 = Model(name: "Silla#2", category: .silla, scale: 1.0)
         let silla3 = Model(name: "Silla#3", category: .silla, scale: 1.0)
         let silla4 = Model(name: "Silla#4", category: .silla, scale: 1.0)

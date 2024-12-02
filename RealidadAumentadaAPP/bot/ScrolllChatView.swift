@@ -21,7 +21,7 @@ struct ScrolllChatView: View {
     
     @Binding var textInput : String
     
-    @Binding var position : ScrollPosition
+    @State private var poScroll = ScrollPosition(edge: .top)
     
     @State var ButtonInits: [String] = ["lista de productos","En cuanto tiempo obtendré mi orden?","Cómo puedo saber el precio de los productos?","Lista de sofas", "Lista de sillas", "Lista de mesas"]
     
@@ -52,7 +52,7 @@ struct ScrolllChatView: View {
                         IMAGEChange()
                     }else if messageModel.contains("[BUTTONINIT]") {
                         let newMessage = messageModel.replacingOccurrences(of: "[BUTTONINIT]", with: "")
-                        INITChange(newMessage: newMessage, messages:messages, position:$position, ButtonInits:$ButtonInits)
+                        INITChange(newMessage: newMessage, messages:messages, poScroll:$poScroll, ButtonInits:$ButtonInits)
                             
                     }else if messageModel.contains("[BUTTONLISTA]") {
                             let newMessage = messageModel.replacingOccurrences(of: "[BUTTONLISTA]", with: "")
@@ -109,9 +109,9 @@ struct ScrolllChatView: View {
         }
         .padding(8)
         .background(.white.opacity(0.4))
-        .scrollPosition($position)
+        .scrollPosition($poScroll)
         .onAppear {
-            position.scrollTo(edge: .bottom)
+            poScroll.scrollTo(edge: .bottom)
         }
         
         HStack{
@@ -152,7 +152,7 @@ struct ScrolllChatView: View {
                    
                     messages.first?.historialChat.append(GetRes)
                     
-                     position.scrollTo(edge: .bottom)
+                    poScroll.scrollTo(edge: .bottom)
                    
                 }
             }

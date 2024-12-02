@@ -15,7 +15,7 @@ struct ToggleChat: View {
 
     @Binding var buttonOpenChat:Bool
     @Binding var modelName: String
-    @Binding var position: ScrollPosition
+    @StateObject var poScroll = PositionScroll()
     
     @State var textInput: String = "" 
     
@@ -55,11 +55,10 @@ struct ToggleChat: View {
                 }
                 .padding(30)
                 
-                ScrolllChatView(buttonOpenChat: $buttonOpenChat, textInput: $textInput, position:$position)
+                ScrolllChatView(buttonOpenChat: $buttonOpenChat, textInput: $textInput)
                 
             }
-        }
+        }.environmentObject(poScroll)
     }
-    
 }
 

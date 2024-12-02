@@ -17,6 +17,8 @@ class CustomARView: ARView{
         
         focusEntity = FocusEntity(on: self, focus: .classic)
         
+        configure()
+        
     }
     @objc required dynamic init?(coder decoder: NSCoder){
         fatalError("ini(coder:) no puede ser implementado")

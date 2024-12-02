@@ -13,7 +13,7 @@ struct INITChange: View {
     
     var messages: [ChatModel]
     
-    @Binding var position: ScrollPosition
+    @Binding var poScroll:ScrollPosition
     @Binding var ButtonInits: [String]
 
     var body: some View {
@@ -42,7 +42,7 @@ struct INITChange: View {
                                         messages.first?.historialChat.append("[USER]\(item.wrappedValue )")
                                             
                                         messages.first?.historialChat.append(await getBotResponse(message: "\(item.wrappedValue)"))
-                                         position.scrollTo(edge: .bottom)
+                                        poScroll.scrollTo(edge: .bottom)
                                    
                                         
                                     }

@@ -13,7 +13,7 @@ struct ControlView:View {
     @Binding var buttonIsVisible:Bool
     @Binding var buttonOpenBrowse:Bool
     @State private var buttonEnabled = true
-    @State private var position = ScrollPosition(edge: .top)
+    @StateObject var poScroll = PositionScroll()
 
     @Environment(\.modelContext) var modelContext
     
@@ -55,7 +55,7 @@ struct ControlView:View {
                                     self.buttonOpenChat.toggle()
                                     self.buttonEnabled = true
                                     
-                                    position.scrollTo(edge: .bottom)
+                                    poScroll.position.scrollTo(edge: .bottom)
                                 }
 
                             }
@@ -72,7 +72,7 @@ struct ControlView:View {
                                     self.buttonOpenChat.toggle()
                                     self.buttonEnabled = true
                                     
-                                    position.scrollTo(edge: .bottom)
+                                    poScroll.position.scrollTo(edge: .bottom)
                                 }
                                 
                             }
@@ -82,7 +82,7 @@ struct ControlView:View {
                             Image(systemName: "rectangle.and.text.magnifyingglass").font(.system(size:40)).foregroundColor(.white).buttonStyle(PlainButtonStyle())
                         }.padding(10).background(.gray.opacity(0.5)).cornerRadius(10)
                 }.padding(30).disabled(!buttonEnabled).opacity(buttonEnabled ? 1 : 0.5)
-                FooterBar(buttonOpenChat:$buttonOpenChat, buttonOpenBrowse: $buttonOpenBrowse,modelName:$modelName, position:$position)
+                FooterBar(buttonOpenChat:$buttonOpenChat, buttonOpenBrowse: $buttonOpenBrowse,modelName:$modelName)
                 
                 
             }
@@ -113,7 +113,7 @@ struct FooterBar:View {
     @Binding var buttonOpenBrowse:Bool
     @Binding var modelName: String
     
-    @Binding var position: ScrollPosition
+    @StateObject var poScroll = PositionScroll()
     
     @Query var messages: [ChatModel]
     
@@ -138,12 +138,12 @@ struct FooterBar:View {
                 //aqui se llama el metodo que intercambia el valor de la varible de true o false o viceversa
                 self.buttonOpenChat.toggle()
                 
-                position.scrollTo(edge: .bottom)
+                poScroll.position.scrollTo(edge: .bottom)
 
             }){
                 Image(systemName: "ellipsis.message.fill").font(.system(size:40)).foregroundColor(.white).buttonStyle(PlainButtonStyle())
             }.sheet(isPresented: $buttonOpenChat , content: {
-                ToggleChat(buttonOpenChat:$buttonOpenChat, modelName:$modelName, position:$position)
+                ToggleChat(buttonOpenChat:$buttonOpenChat, modelName:$modelName)
             })
 
             Spacer()
@@ -178,6 +178,8 @@ struct FooterBar:View {
                 BrowseView(buttonOpenBrowse:$buttonOpenBrowse, modelName:$modelName)
             })
             Spacer()
-        }.frame(maxWidth: 500).padding(40).background(Color.black.opacity(0.2))
+        }
+        .frame(maxWidth: 500).padding(40).background(Color.black.opacity(0.2))
+        .environmentObject(poScroll)
     }
 }
