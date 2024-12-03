@@ -12,9 +12,13 @@ import UIKit
 
 struct ContentView : View {
     @StateObject var placementSettings = PlacementSettings()
-
+    @StateObject var modelDeletionManager = ModelDeletion()
+    @StateObject var sceneManager = SceneManager()
     var body: some View {
-        HomeView().modelContainer(for: [ChatModel.self, ImageData.self, ImageAnalisis.self]).environmentObject(placementSettings)
+        HomeView().modelContainer(for: [ChatModel.self, ImageData.self, ImageAnalisis.self])
+            .environmentObject(placementSettings)
+            .environmentObject(modelDeletionManager)
+            .environmentObject(sceneManager)
         
     }
 }

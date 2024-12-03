@@ -93,11 +93,28 @@ struct ControlView:View {
 
 struct TopButton:View {
     @Binding var buttonIsVisible:Bool
+    
+    @EnvironmentObject var sceneManager:SceneManager
 
     var body: some View {
         //boton de la parte superior
-        HStack{
+        HStack(spacing:20){
             Spacer()
+            
+            Button(action:{
+                print("alerta Screenshot presionado")
+                
+                // esta es la accion que se ejecuta con el boton de screenshot, aqui se crea una imgen de la vista de realidad aumentada y se guarda en la base de datos
+                for anchorEntity in self.sceneManager.anchorEntities{
+                    print("remove entity")
+                    anchorEntity.removeFromParent()
+                }
+
+            }){
+                Image(systemName: "trash.slash").font(.system(size:40)).foregroundColor(.white).buttonStyle(PlainButtonStyle())
+            }.padding(10).cornerRadius(30).background(.gray.opacity(0.7))
+
+            
             Button(action:{
                 print("alerta boton presionado")
                 self.buttonIsVisible.toggle()
@@ -147,6 +164,7 @@ struct FooterBar:View {
             })
 
             Spacer()
+            
             
             Button(action:{
                 print("alerta Screenshot presionado")
